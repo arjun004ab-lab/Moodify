@@ -1,7 +1,7 @@
 services:
 
   # ==========================================================
-  # MOODIFY API
+  # MOODIFY BACKEND
   # FastAPI + TensorFlow/Keras + OpenCV
   # ==========================================================
 
@@ -18,14 +18,18 @@ services:
     autoDeployTrigger: commit
 
     envVars:
+
       - key: MOODIFY_SECRET_KEY
         generateValue: true
 
       - key: MOODIFY_EMOTION_LABELS
         value: angry,disgust,fear,happy,sad,surprise,neutral
 
+      # Automatically receives the frontend Render URL
       - key: MOODIFY_FRONTEND_ORIGINS
-        sync: false
+        fromService:
+          name: moodify-frontend
+          envVarKey: RENDER_EXTERNAL_URL
 
       - key: TF_NUM_INTRAOP_THREADS
         value: "1"
@@ -49,16 +53,20 @@ services:
     runtime: static
     name: moodify-frontend
 
+    rootDir: frontend
+
     buildCommand: npm ci && npm run build
     staticPublishPath: ./dist
-
-    rootDir: frontend
 
     autoDeployTrigger: commit
 
     envVars:
+
+      # Automatically receives the backend Render URL
       - key: VITE_API_URL
-        sync: false
+        fromService:
+          name: moodify-api
+          envVarKey: RENDER_EXTERNAL_URL
 
     routes:
       - type: rewrite
