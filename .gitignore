@@ -9,3 +9,6 @@ backend/model_metrics.json
 node_modules/
 frontend/dist/
 .vite/
+
+backend/fer2013.csv
+fer2013.csv
