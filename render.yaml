@@ -1,7 +1,7 @@
 services:
 
   # ==========================================================
-  # MOODIFY BACKEND
+  # MOODIFY API
   # FastAPI + TensorFlow/Keras + OpenCV
   # ==========================================================
 
@@ -25,9 +25,9 @@ services:
       - key: MOODIFY_EMOTION_LABELS
         value: angry,disgust,fear,happy,sad,surprise,neutral
 
-      # Automatically receives the frontend Render URL
       - key: MOODIFY_FRONTEND_ORIGINS
         fromService:
+          type: web
           name: moodify-frontend
           envVarKey: RENDER_EXTERNAL_URL
 
@@ -62,18 +62,20 @@ services:
 
     envVars:
 
-      # Automatically receives the backend Render URL
       - key: VITE_API_URL
         fromService:
+          type: web
           name: moodify-api
           envVarKey: RENDER_EXTERNAL_URL
 
     routes:
+
       - type: rewrite
         source: /*
         destination: /index.html
 
     headers:
+
       - path: /*
         name: X-Content-Type-Options
         value: nosniff
