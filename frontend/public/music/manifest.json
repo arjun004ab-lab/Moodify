@@ -1,0 +1,44 @@
+{
+  "happy": {
+    "title": "Moodify Happy Flow",
+    "artist": "Moodify Original Demo",
+    "genre": "Original Instrumental",
+    "src": "/music/happy-01.mp3"
+  },
+  "sad": {
+    "title": "Moodify Sad Flow",
+    "artist": "Moodify Original Demo",
+    "genre": "Original Instrumental",
+    "src": "/music/sad-01.mp3"
+  },
+  "angry": {
+    "title": "Moodify Angry Flow",
+    "artist": "Moodify Original Demo",
+    "genre": "Original Instrumental",
+    "src": "/music/angry-01.mp3"
+  },
+  "fear": {
+    "title": "Moodify Fear Flow",
+    "artist": "Moodify Original Demo",
+    "genre": "Original Instrumental",
+    "src": "/music/fear-01.mp3"
+  },
+  "surprise": {
+    "title": "Moodify Surprise Flow",
+    "artist": "Moodify Original Demo",
+    "genre": "Original Instrumental",
+    "src": "/music/surprise-01.mp3"
+  },
+  "disgust": {
+    "title": "Moodify Disgust Flow",
+    "artist": "Moodify Original Demo",
+    "genre": "Original Instrumental",
+    "src": "/music/disgust-01.mp3"
+  },
+  "neutral": {
+    "title": "Moodify Neutral Flow",
+    "artist": "Moodify Original Demo",
+    "genre": "Original Instrumental",
+    "src": "/music/neutral-01.mp3"
+  }
+}

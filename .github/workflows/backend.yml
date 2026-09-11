@@ -1,0 +1,79 @@
+name: Moodify Backend - Build and Deploy
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "backend/**"
+      - ".github/workflows/backend.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  RESOURCE_GROUP: moodify-rg
+  CONTAINER_APP_NAME: moodify-api
+  CONTAINER_ENVIRONMENT: moodify-env
+  ACR_NAME: moodifyacr
+  IMAGE_NAME: moodify-api
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Azure Login
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Build and push container image
+        run: |
+          az acr build \
+            --registry "$ACR_NAME" \
+            --image "$IMAGE_NAME:${GITHUB_SHA}" \
+            --image "$IMAGE_NAME:latest" \
+            ./backend
+
+      - name: Update Azure Container App
+        run: |
+          ACR_LOGIN_SERVER=$(az acr show \
+            --name "$ACR_NAME" \
+            --query loginServer \
+            --output tsv)
+
+          az containerapp update \
+            --name "$CONTAINER_APP_NAME" \
+            --resource-group "$RESOURCE_GROUP" \
+            --image "$ACR_LOGIN_SERVER/$IMAGE_NAME:${GITHUB_SHA}"
+
+      - name: Verify live endpoint
+        run: |
+          FQDN=$(az containerapp show \
+            --name "$CONTAINER_APP_NAME" \
+            --resource-group "$RESOURCE_GROUP" \
+            --query properties.configuration.ingress.fqdn \
+            --output tsv)
+
+          echo "Backend: https://$FQDN"
+
+          for i in {1..30}; do
+            CODE=$(curl -k -s -o /tmp/health.json -w "%{http_code}" \
+              "https://$FQDN/health/live" || true)
+
+            if [ "$CODE" = "200" ]; then
+              cat /tmp/health.json
+              exit 0
+            fi
+
+            sleep 10
+          done
+
+          echo "Backend health check failed."
+          exit 1

@@ -1,0 +1,5 @@
+tensorflow
+numpy
+Pillow
+opencv-python-headless==4.14.0.94
+scikit-learn

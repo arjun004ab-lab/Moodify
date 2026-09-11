@@ -1,0 +1,11 @@
+Moodify no longer uses Azure GitHub Actions.
+
+Render service environment variables:
+
+Backend
+MOODIFY_SECRET_KEY=<strong secret; Render can generate this>
+MOODIFY_EMOTION_LABELS=angry,disgust,fear,happy,sad,surprise,neutral
+MOODIFY_FRONTEND_ORIGINS=https://<your-frontend>.onrender.com
+
+Frontend (build-time)
+VITE_API_URL=https://<your-backend>.onrender.com

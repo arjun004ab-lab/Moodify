@@ -1,0 +1,22 @@
+MOODIFY AI — COMPETITION READINESS CHECKLIST
+
+[ ] backend/models/emotion_cnn.h5 exists
+[ ] Backend starts locally
+[ ] /health/live returns alive
+[ ] /health/ready reports CNN loaded
+[ ] Frontend starts locally
+[ ] Register/Login works
+[ ] Emotion Scan captures and predicts
+[ ] Music changes by normalized emotion
+[ ] Beauty Scan returns non-clinical visual proxies
+[ ] Research page clearly distinguishes evaluated vs not evaluated
+[ ] Real held-out evaluation generated model_metrics.json before performance claims
+[ ] GitHub repository contains no secrets
+[ ] Render backend deployed successfully
+[ ] Render frontend deployed successfully
+[ ] Frontend VITE_API_URL points to HTTPS Render backend
+[ ] Backend CORS includes exact Render frontend origin
+[ ] Public health endpoints pass
+[ ] Public end-to-end demo passes
+
+No award score is guaranteed. Competition scoring depends on the event rubric, competing submissions, and demonstration quality.

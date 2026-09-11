@@ -1,0 +1,15 @@
+fastapi
+uvicorn[standard]
+python-multipart
+sqlalchemy
+bcrypt
+python-jose[cryptography]
+email-validator
+tensorflow
+numpy
+pandas
+opencv-python-headless
+Pillow
+openpyxl
+gunicorn
+psycopg[binary]

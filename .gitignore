@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+.env.*
+*.db
+*.sqlite
+backend/model_metrics.json
+node_modules/
+frontend/dist/
+.vite/

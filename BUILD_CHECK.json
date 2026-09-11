@@ -1,0 +1,9 @@
+{
+  "auth.py": "OK",
+  "database.py": "OK",
+  "schemas.py": "OK",
+  "recommendations.py": "OK",
+  "model.py": "OK",
+  "beauty.py": "OK",
+  "main.py": "OK"
+}
