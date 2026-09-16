@@ -1,4 +1,4 @@
-# Moodify AI — PhD / Hackathon Competition Build
+# Moodify AI 
 
 Moodify is a research-oriented multimodal web application combining:
 
