@@ -8,7 +8,7 @@ email-validator
 tensorflow
 numpy
 pandas
-opencv-python-headless
+opencv-python-headless==4.14.0.94
 Pillow
 openpyxl
 gunicorn
