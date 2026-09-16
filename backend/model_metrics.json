@@ -1,0 +1,180 @@
+{
+  "evaluation_protocol": {
+    "dataset_type": "held-out image test set",
+    "sample_count": 3589,
+    "class_labels": [
+      "angry",
+      "disgust",
+      "fear",
+      "happy",
+      "sad",
+      "surprise",
+      "neutral"
+    ]
+  },
+  "metrics": {
+    "accuracy": 0.618557,
+    "macro_precision": 0.621406,
+    "macro_recall": 0.578379,
+    "macro_f1": 0.593724,
+    "weighted_f1": 0.62048,
+    "mean_inference_ms": 74.522
+  },
+  "per_class": {
+    "angry": {
+      "precision": 0.582716049382716,
+      "recall": 0.48065173116089616,
+      "f1-score": 0.5267857142857143,
+      "support": 491.0
+    },
+    "disgust": {
+      "precision": 0.631578947368421,
+      "recall": 0.43636363636363634,
+      "f1-score": 0.5161290322580645,
+      "support": 55.0
+    },
+    "fear": {
+      "precision": 0.5034802784222738,
+      "recall": 0.4109848484848485,
+      "f1-score": 0.45255474452554745,
+      "support": 528.0
+    },
+    "happy": {
+      "precision": 0.8379629629629629,
+      "recall": 0.8236632536973834,
+      "f1-score": 0.8307515777395296,
+      "support": 879.0
+    },
+    "sad": {
+      "precision": 0.42435424354243545,
+      "recall": 0.5808080808080808,
+      "f1-score": 0.4904051172707889,
+      "support": 594.0
+    },
+    "surprise": {
+      "precision": 0.8070652173913043,
+      "recall": 0.7139423076923077,
+      "f1-score": 0.7576530612244898,
+      "support": 416.0
+    },
+    "neutral": {
+      "precision": 0.5626865671641791,
+      "recall": 0.6022364217252396,
+      "f1-score": 0.5817901234567902,
+      "support": 626.0
+    },
+    "accuracy": 0.6185567010309279,
+    "macro avg": {
+      "precision": 0.6214063237477561,
+      "recall": 0.5783786114189132,
+      "f1-score": 0.5937241958229892,
+      "support": 3589.0
+    },
+    "weighted avg": {
+      "precision": 0.6306226792831839,
+      "recall": 0.6185567010309279,
+      "f1-score": 0.6204801768858182,
+      "support": 3589.0
+    }
+  },
+  "confusion_matrix": {
+    "labels": [
+      "angry",
+      "disgust",
+      "fear",
+      "happy",
+      "sad",
+      "surprise",
+      "neutral"
+    ],
+    "matrix": [
+      [
+        236,
+        10,
+        43,
+        22,
+        109,
+        5,
+        66
+      ],
+      [
+        11,
+        24,
+        7,
+        2,
+        6,
+        2,
+        3
+      ],
+      [
+        52,
+        2,
+        217,
+        21,
+        135,
+        41,
+        60
+      ],
+      [
+        28,
+        0,
+        19,
+        724,
+        49,
+        12,
+        47
+      ],
+      [
+        42,
+        2,
+        70,
+        29,
+        345,
+        5,
+        101
+      ],
+      [
+        11,
+        0,
+        51,
+        23,
+        18,
+        297,
+        16
+      ],
+      [
+        25,
+        0,
+        24,
+        43,
+        151,
+        6,
+        377
+      ]
+    ]
+  },
+  "model": {
+    "model_file": "emotion_cnn.h5",
+    "model_sha256": "b8eb9215570c15338c3f0081eeb1c512703db98c13dbceab355bf425e7d88e63",
+    "input_shape": [
+      null,
+      48,
+      48,
+      1
+    ],
+    "output_shape": [
+      null,
+      7
+    ],
+    "class_labels": [
+      "angry",
+      "disgust",
+      "fear",
+      "happy",
+      "sad",
+      "surprise",
+      "neutral"
+    ],
+    "face_detector": true
+  }
+}
