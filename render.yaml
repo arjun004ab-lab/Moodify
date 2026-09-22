@@ -31,6 +31,14 @@ services:
           name: moodify-frontend
           envVarKey: RENDER_EXTERNAL_URL
 
+      # ---------------- CPU / TensorFlow ----------------
+
+      - key: CUDA_VISIBLE_DEVICES
+        value: "-1"
+
+      - key: TF_CPP_MIN_LOG_LEVEL
+        value: "2"
+
       - key: TF_NUM_INTRAOP_THREADS
         value: "1"
 
