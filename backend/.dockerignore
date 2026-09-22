@@ -6,5 +6,5 @@ __pycache__/
 .venv/
 .git/
 .pytest_cache/
-model_metrics.json
+
 evaluation_data/

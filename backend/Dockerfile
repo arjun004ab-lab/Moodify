@@ -15,19 +15,25 @@ WORKDIR /app
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
-       libglib2.0-0 \
-       libgomp1 \
-       ca-certificates \
+        libglib2.0-0 \
+        libgomp1 \
+        ca-certificates \
     && rm -rf /var/lib/apt/lists/*
 
 COPY requirements.txt .
 
-RUN python -m pip install --upgrade pip \
-    && python -m pip install -r requirements.txt
+RUN python -m pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
+# Verify the production model exists.
 RUN test -f models/emotion_cnn.h5
+
+# Verify the research evaluation artifact exists.
+RUN test -f model_metrics.json
+
+# Validate the research artifact structure.
+RUN python -c "import json; d=json.load(open('model_metrics.json', encoding='utf-8')); assert d['evaluation_protocol']['sample_count'] > 0; assert 'accuracy' in d['metrics']; assert 'macro_f1' in d['metrics']; print('Evaluation artifact: VALID')"
 
 EXPOSE 10000
 
